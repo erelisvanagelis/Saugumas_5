@@ -5,9 +5,9 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FirstApp
+namespace Server
 {
-    class Package
+    public class Package
     {
         BigInteger n;
         BigInteger e;
@@ -35,6 +35,8 @@ namespace FirstApp
             S = RSATool.GetS(X, (int)D, N);
             this.Message = message;
         }
+
+        public Package(){}
 
         public void Parse(string data)
         {
