@@ -11,14 +11,12 @@ namespace FirstApp
     {
         BigInteger n;
         BigInteger e;
-        BigInteger d;
         BigInteger x;
         BigInteger s;
         String message;
 
         public BigInteger N { get => n; set => n = value; }
         public BigInteger E { get => e; set => e = value; }
-        public BigInteger D { get => d; set => d = value; }
         public BigInteger X { get => x; set => x = value; }
         public BigInteger S { get => s; set => s = value; }
         public string Message { get => message; set => message = value; }
@@ -30,7 +28,7 @@ namespace FirstApp
             N = RSATool.GetN(q, p);
             BigInteger phi = RSATool.GetPhi(q, p);
             E = RSATool.GetE(phi);
-            D = RSATool.GetD(E, phi);
+            BigInteger D = RSATool.GetD(E, phi);
             X = RSATool.GetRandom();
             S = RSATool.GetS(X, (int)D, N);
             this.Message = message;
@@ -42,7 +40,6 @@ namespace FirstApp
 
             N = BigInteger.Parse(lines[0]);
             E = BigInteger.Parse(lines[1]);
-            D = BigInteger.Parse(lines[2]);
             X = BigInteger.Parse(lines[3]);
             S = BigInteger.Parse(lines[4]);
 
@@ -57,7 +54,7 @@ namespace FirstApp
         {
             return $"{N}" +
                    $"\n{E}" +
-                   $"\n{RSATool.GetRandomPrime()}" +
+                   $"\n{X}" +
                    $"\n{S}" +
                    $"\n{Message}";
         }

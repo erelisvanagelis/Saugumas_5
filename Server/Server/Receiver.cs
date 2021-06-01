@@ -48,6 +48,7 @@ namespace Server
                             }
 
                             Package package = new Package();
+                            Console.WriteLine(Encoding.ASCII.GetString(ms.ToArray(), 0, (int)ms.Length));
                             package.Parse(Encoding.ASCII.GetString(ms.ToArray(), 0, (int)ms.Length));
                             updateResult(package);
                             

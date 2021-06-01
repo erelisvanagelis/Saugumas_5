@@ -19,6 +19,7 @@ namespace FirstApp
             BigInteger i = 2;
             while(counter < 300)
             {
+                Console.WriteLine(counter);
                 if(IsItPrimary(i))
                 {
                     primes[counter] = (int)i;
