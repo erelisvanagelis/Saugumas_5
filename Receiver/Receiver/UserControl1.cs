@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Server
+namespace Receiver
 {
     public partial class UserControl1 : UserControl
     {
@@ -35,17 +35,23 @@ namespace Server
             this.removeControl = removeControl;
         }
 
-        private void confirmButton_Click(object sender, EventArgs e)
+        private void validateButton_Click(object sender, EventArgs e)
         {
             try
             {
-                package.X = BigInteger.Parse(xTextBox.Text);
-                package.S = BigInteger.Parse(sTextBox.Text);
+                if(RSATool.ValidateSignature(package.S, package.E, package.N, package.X))
+                {
+                    validateButton.Text = "Valid";
+                    validateButton.Enabled = false;
+                    throw new Exception("Password is valid");
+                }
+                else
+                {
+                    validateButton.Text = "Invalid";
+                    validateButton.Enabled = false;
+                    throw new Exception("Password is invalid");
+                }
 
-                Sender senderBetKitoks = new Sender("127.0.0.1", 2022);
-                senderBetKitoks.Send(package.ToString());
-
-                removeControl(this);
             }
             catch(Exception exc)
             {

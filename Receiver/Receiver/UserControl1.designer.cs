@@ -1,5 +1,5 @@
 ﻿
-namespace Server
+namespace Receiver
 {
     partial class UserControl1
     {
@@ -29,7 +29,7 @@ namespace Server
         /// </summary>
         private void InitializeComponent()
         {
-            this.confirmButton = new System.Windows.Forms.Button();
+            this.validateButton = new System.Windows.Forms.Button();
             this.nTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.eTextBox = new System.Windows.Forms.TextBox();
@@ -43,15 +43,15 @@ namespace Server
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // confirmButton
+            // validateButton
             // 
-            this.confirmButton.Location = new System.Drawing.Point(628, 4);
-            this.confirmButton.Name = "confirmButton";
-            this.confirmButton.Size = new System.Drawing.Size(81, 126);
-            this.confirmButton.TabIndex = 0;
-            this.confirmButton.Text = "Confirm";
-            this.confirmButton.UseVisualStyleBackColor = true;
-            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
+            this.validateButton.Location = new System.Drawing.Point(628, 4);
+            this.validateButton.Name = "validateButton";
+            this.validateButton.Size = new System.Drawing.Size(81, 126);
+            this.validateButton.TabIndex = 0;
+            this.validateButton.Text = "Validate";
+            this.validateButton.UseVisualStyleBackColor = true;
+            this.validateButton.Click += new System.EventHandler(this.validateButton_Click);
             // 
             // nTextBox
             // 
@@ -128,7 +128,7 @@ namespace Server
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.confirmButton);
+            this.Controls.Add(this.validateButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UserControl1";
@@ -145,7 +145,7 @@ namespace Server
 
         #endregion
 
-        private System.Windows.Forms.Button confirmButton;
+        private System.Windows.Forms.Button validateButton;
         private System.Windows.Forms.TextBox nTextBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox eTextBox;

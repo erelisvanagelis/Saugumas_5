@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Numerics;
 
-namespace FirstApp
+namespace Receiver
 {
     class RSATool
     {
@@ -85,13 +85,18 @@ namespace FirstApp
             return d;
         }
 
-        public static BigInteger GetS(BigInteger x, int d, BigInteger n)
+        public static BigInteger GetS(BigInteger x, int d, BigInteger n) => BigInteger.Pow(x, d) % n;
+
+        public static bool ValidateSignature(BigInteger s, BigInteger e, BigInteger n, BigInteger x)
         {
-            BigInteger remainer;
-            BigInteger.DivRem(BigInteger.Pow(x, d), n, out remainer);
-            return remainer;
+            BigInteger xBetKitoks = BigInteger.Pow(s, (int)e) % n;
+            if (xBetKitoks == x)
+            {
+                return true;
+            }
+
+            return false;
         }
-            //=> BigInteger.BigInteger.Pow(x, d) % n;
 
         public static int GetRandom(int min = 0, int max = 300)
         {
