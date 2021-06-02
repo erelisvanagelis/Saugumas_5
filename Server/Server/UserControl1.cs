@@ -14,13 +14,15 @@ namespace Server
     public partial class UserControl1 : UserControl
     {
         protected Package package;
+        public delegate void RemoveControl(UserControl1 userControl1);
+        RemoveControl removeControl;
 
         public UserControl1()
         {
             InitializeComponent();
         }
 
-        public UserControl1(Package package)
+        public UserControl1(Package package, RemoveControl removeControl)
         {
             InitializeComponent();
 
@@ -30,12 +32,15 @@ namespace Server
             xTextBox.Text = package.X.ToString();
             sTextBox.Text = package.S.ToString();
             messageTextBox.Text = package.Message.ToString();
+            this.removeControl = removeControl;
         }
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
             package.X = BigInteger.Parse(xTextBox.Text);
             package.S = BigInteger.Parse(sTextBox.Text);
+
+            removeControl(this);
         }
     }
 }

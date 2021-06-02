@@ -11,15 +11,16 @@ namespace FirstApp
     class RSATool
     {
         private static int[] primes;
+        private static Random generator;
 
         static RSATool()
         {
+            generator = new Random();
             primes = new int[300];
             int counter = 0;
             BigInteger i = 2;
             while(counter < 300)
             {
-                Console.WriteLine(counter);
                 if(IsItPrimary(i))
                 {
                     primes[counter] = (int)i;
@@ -61,7 +62,6 @@ namespace FirstApp
                 if(Eucledian(t, i))
                 {
                     e = i;
-                    Console.WriteLine("e = " + e);
                     break;
                 }
             }
@@ -89,7 +89,13 @@ namespace FirstApp
 
         public static int GetRandom(int min = 0, int max = 300)
         {
-            Random generator = new Random();
+            /*
+            Console.WriteLine(generator.Next(min, max));
+            Console.WriteLine(generator.Next(min, max));
+            Console.WriteLine(generator.Next(min, max));
+            Console.WriteLine(generator.Next(min, max));
+            Console.WriteLine(generator.Next(min, max));
+            Console.WriteLine(generator.Next(min, max));*/
             return generator.Next(min, max);
         }
 
@@ -97,7 +103,6 @@ namespace FirstApp
 
         public static int GetRandomPrime(int min = 0, int max = 300)
         {
-            Random generator = new Random();
             return primes[generator.Next(min, max)];
         }
 

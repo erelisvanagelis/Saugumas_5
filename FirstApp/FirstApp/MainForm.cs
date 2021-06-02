@@ -22,20 +22,12 @@ namespace FirstApp
         {
             try
             {
-                int q = RSATool.GetRandomPrime();
-                int p = RSATool.GetRandomPrime();
-                BigInteger n = RSATool.GetN(q, p);
-                BigInteger phi = RSATool.GetPhi(q, p);
-                BigInteger eBetKitoks = RSATool.GetE(phi);
-                BigInteger d = RSATool.GetD(eBetKitoks, phi);
-                BigInteger x = RSATool.GetRandom();
-                BigInteger s = RSATool.GetS(x, (int)d, n);
-
+                this.Text = "Sender - Creating package";
                 Package package = new Package(textBox1.Text);
-                Console.WriteLine(package.ToString());
-
+                this.Text = "Sender - Sending package";
                 Sender senderBetKitoks = new Sender();
                 senderBetKitoks.Send(package.ToString());
+                this.Text = "Sender - Package sent";
             }
             catch(Exception exc)
             {

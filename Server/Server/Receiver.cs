@@ -17,13 +17,13 @@ namespace Server
         public delegate void TroubleAndMakeItDouble(string message);
         public TroubleAndMakeItDouble troubleAndMakeItDouble;
 
-        public Receiver(UpdateResult updateResult, TroubleAndMakeItDouble troubleAndMakeItDouble)
+        public Receiver(UpdateResult updateResult, TroubleAndMakeItDouble troubleAndMakeItDouble, string ip = "127.0.0.1", int port = 2021)
         {
             this.updateResult = updateResult;
             this.troubleAndMakeItDouble = troubleAndMakeItDouble;
 
             if (listener == null)
-                listener = new TcpListener(IPAddress.Any, 2021);
+                listener = new TcpListener(IPAddress.Parse(ip), port);
         }
 
         public void Start()

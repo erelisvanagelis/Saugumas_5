@@ -24,14 +24,23 @@ namespace FirstApp
         public Package(string message)
         {
             int q = RSATool.GetRandomPrime();
+            Console.WriteLine("q = " + q);
             int p = RSATool.GetRandomPrime();
+            Console.WriteLine("p = " + p);
             N = RSATool.GetN(q, p);
+            Console.WriteLine("n = " + n);
             BigInteger phi = RSATool.GetPhi(q, p);
+            Console.WriteLine("phi = " + phi);
             E = RSATool.GetE(phi);
-            BigInteger D = RSATool.GetD(E, phi);
+            Console.WriteLine("e = " + e);
+            BigInteger d = RSATool.GetD(E, phi);
+            Console.WriteLine("d = " + d);
             X = RSATool.GetRandom();
-            S = RSATool.GetS(X, (int)D, N);
+            Console.WriteLine("x = " + x);
+            S = RSATool.GetS(X, (int)d, N);
+            Console.WriteLine("s = " + s);
             this.Message = message;
+            Console.WriteLine("message = " + message);
         }
 
         public void Parse(string data)
